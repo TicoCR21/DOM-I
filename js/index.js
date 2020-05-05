@@ -40,3 +40,80 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+
+// Task 1
+document.getElementById( "cta-img" ).src = siteContent[ "cta" ][ "img-src" ];
+document.getElementById( "middle-img" ).src = siteContent[ "main-content" ][ "middle-img-src" ];
+
+// Task 2
+let nav_a = document.querySelectorAll( "nav a" );
+nav_a.forEach( ( a, index ) => a.textContent = siteContent.nav[ "nav-item-" + ( index + 1 ) ] );
+
+let cta_text = document.querySelector( ".cta-text" );
+cta_text.firstElementChild.textContent = siteContent.cta.h1;
+cta_text.lastElementChild.textContent = siteContent.cta.button;
+
+let main_content = document.querySelectorAll( ".main-content .text-content" );
+main_content[ 0 ].firstElementChild.textContent = siteContent[ "main-content" ][ "features-h4" ];
+main_content[ 0 ].lastElementChild.textContent = siteContent[ "main-content" ][ "features-content" ];
+
+main_content[ 1 ].firstElementChild.textContent = siteContent[ "main-content" ][ "about-h4" ];
+main_content[ 1 ].lastElementChild.textContent = siteContent[ "main-content" ][ "about-content" ];
+
+main_content[ 2 ].firstElementChild.textContent = siteContent[ "main-content" ][ "services-h4" ];
+main_content[ 2 ].lastElementChild.textContent = siteContent[ "main-content" ][ "services-content" ];
+
+main_content[ 3 ].firstElementChild.textContent = siteContent[ "main-content" ][ "product-h4" ];
+main_content[ 3 ].lastElementChild.textContent = siteContent[ "main-content" ][ "product-content" ];
+
+main_content[ 4 ].firstElementChild.textContent = siteContent[ "main-content" ][ "vision-h4" ];
+main_content[ 4 ].lastElementChild.textContent = siteContent[ "main-content" ][ "vision-content" ];
+
+document.querySelector( ".contact h4" ).textContent = siteContent[ "contact" ][ "contact-h4" ];
+
+let contact_p = document.querySelectorAll( ".contact p" );
+contact_p[ 0 ].textContent = siteContent[ "contact" ][ "address" ];
+contact_p[ 1 ].textContent = siteContent[ "contact" ][ "phone" ];
+contact_p[ 2 ].textContent = siteContent[ "contact" ][ "email" ];
+
+document.querySelector( "footer p" ).textContent = siteContent.footer.copyright;
+
+// Task 3
+let one = document.createElement( "a" );
+one.href = "#";
+one.textContent = "Home";
+
+let two = document.createElement( "a" );
+two.setAttribute( "href", "#" );
+two.appendChild( document.createTextNode( "Help" ) );
+
+let nav = document.querySelector( "nav" );
+nav.prepend( one );
+nav.appendChild( two );
+
+document.querySelectorAll( "nav a" ).forEach( a => a.style.color = "green" );
+
+// Stretch
+let button = document.querySelector( "button" );
+
+let test = true;
+
+button.addEventListener( "click", function( e )
+{
+  e.preventDefault();
+  if( test )
+  {
+    document.getElementById( "middle-img" ).style.borderRadius = '100px';
+    document.querySelectorAll( "nav a" ).forEach( a => a.style.color = "red" );
+
+    test = false;
+  }
+  else
+  {
+    document.getElementById( "middle-img" ).style.borderRadius = '0px';
+    document.querySelectorAll( "nav a" ).forEach( a => a.style.color = "green" );
+
+    test = true;
+  }
+} );
